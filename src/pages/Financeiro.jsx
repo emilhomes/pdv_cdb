@@ -106,7 +106,7 @@ export default function Financeiro() {
 
       {/* Cards de Resumo */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="bg-white rounded-xl p-6 border border-gray-100 shadow-sm flex items-center gap-4">
+        <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-0.5 flex items-center gap-4">
           <div className="p-4 bg-green-100 text-green-600 rounded-full">
             <TrendingUp size={32} />
           </div>
@@ -116,7 +116,7 @@ export default function Financeiro() {
           </div>
         </div>
 
-        <div className="bg-white rounded-xl p-6 border border-gray-100 shadow-sm flex items-center gap-4">
+        <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-0.5 flex items-center gap-4">
           <div className="p-4 bg-red-100 text-red-600 rounded-full">
             <TrendingDown size={32} />
           </div>
@@ -128,7 +128,7 @@ export default function Financeiro() {
       </div>
 
       {/* Controle de Abas */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex flex-col min-h-[500px]">
+      <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden flex flex-col min-h-[500px]">
         
         <div className="flex border-b border-gray-200">
           <button 
@@ -198,7 +198,7 @@ export default function Financeiro() {
               <h2 className="text-lg font-bold text-gray-800">Contas e Boletos a Pagar</h2>
               <button 
                 onClick={() => setModalAberto(true)}
-                className="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-medium transition-colors"
+                className="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl font-medium transition-colors"
               >
                 <Plus size={18} /> Nova Despesa
               </button>
@@ -252,7 +252,7 @@ export default function Financeiro() {
                               {conta.status === 'pendente' && (
                                 <button 
                                   onClick={() => handleMarcarComoPago(conta.id)}
-                                  className="p-1.5 text-green-600 hover:bg-green-50 rounded-md transition-colors border border-green-200"
+                                  className="p-1.5 text-green-600 hover:bg-green-50 rounded-xl transition-colors border border-green-200"
                                   title="Marcar como Pago"
                                 >
                                   <CheckCircle size={18} />
@@ -260,7 +260,7 @@ export default function Financeiro() {
                               )}
                               <button 
                                 onClick={() => handleExcluirConta(conta.id)}
-                                className="p-1.5 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-md transition-colors"
+                                className="p-1.5 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-xl transition-colors"
                                 title="Excluir"
                               >
                                 <Trash2 size={18} />
@@ -281,7 +281,7 @@ export default function Financeiro() {
       {/* Modal de Nova Conta a Pagar */}
       {modalAberto && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl shadow-xl w-full max-w-lg overflow-hidden">
+          <div className="bg-white rounded-2xl shadow-xl w-full max-w-lg overflow-hidden">
             <div className="flex justify-between items-center p-5 border-b border-gray-100 bg-red-600 text-white">
               <h2 className="text-lg font-bold">Lançar Nova Despesa</h2>
               <button onClick={resetFormulario} className="text-white/80 hover:text-white"><X size={24} /></button>
@@ -290,17 +290,17 @@ export default function Financeiro() {
             <form id="form-conta" onSubmit={handleSalvarConta} className="p-5 space-y-4">
               <div className="space-y-1">
                 <label className="text-sm font-medium text-gray-700">Descrição (Ex: Boleto Ambev, Conta de Luz)</label>
-                <input type="text" required value={descricao} onChange={(e) => setDescricao(e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 outline-none" />
+                <input type="text" required value={descricao} onChange={(e) => setDescricao(e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-red-500 outline-none" />
               </div>
               
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-1">
                   <label className="text-sm font-medium text-gray-700 flex items-center gap-2"><DollarSign size={16}/> Valor (R$)</label>
-                  <input type="number" step="0.01" min="0.01" required value={valor} onChange={(e) => setValor(e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 outline-none" />
+                  <input type="number" step="0.01" min="0.01" required value={valor} onChange={(e) => setValor(e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-red-500 outline-none" />
                 </div>
                 <div className="space-y-1">
                   <label className="text-sm font-medium text-gray-700 flex items-center gap-2"><Calendar size={16}/> Vencimento</label>
-                  <input type="date" required value={dataVencimento} onChange={(e) => setDataVencimento(e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 outline-none" />
+                  <input type="date" required value={dataVencimento} onChange={(e) => setDataVencimento(e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-red-500 outline-none" />
                 </div>
               </div>
 
@@ -309,7 +309,7 @@ export default function Financeiro() {
                 <select 
                   value={fornecedorId} 
                   onChange={(e) => setFornecedorId(e.target.value)}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 outline-none bg-white"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-red-500 outline-none bg-white"
                 >
                   <option value="">-- Selecione (ou deixe em branco) --</option>
                   {fornecedores.map(f => (
@@ -320,8 +320,8 @@ export default function Financeiro() {
             </form>
 
             <div className="p-5 border-t border-gray-100 bg-gray-50 flex justify-end gap-3">
-              <button type="button" onClick={resetFormulario} className="px-5 py-2 text-gray-600 font-medium hover:bg-gray-200 rounded-lg">Cancelar</button>
-              <button type="submit" form="form-conta" disabled={loading} className="px-5 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-medium flex items-center gap-2">
+              <button type="button" onClick={resetFormulario} className="px-5 py-2 text-gray-600 font-medium hover:bg-gray-200 rounded-xl">Cancelar</button>
+              <button type="submit" form="form-conta" disabled={loading} className="px-5 py-2 bg-red-600 hover:bg-red-700 text-white rounded-xl font-medium flex items-center gap-2">
                 <CheckCircle size={18} /> {loading ? 'Salvando...' : 'Lançar Despesa'}
               </button>
             </div>

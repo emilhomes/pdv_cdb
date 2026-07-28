@@ -1,6 +1,7 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AuthProvider, AuthContext } from './contexts/AuthContext';
 import { useContext } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 // Componentes e Páginas
 import Layout from './components/Layout/Layout';
@@ -31,12 +32,14 @@ function RotaInicial() {
 // ---------------------------------------------------------
 function RotaPrivada({ children, rolesPermitidas }) {
   const { logado, loadingAuth, usuario } = useContext(AuthContext);
+  const location = useLocation();
 
   if (loadingAuth) {
     return (
-      <div className="flex h-screen w-screen items-center justify-center bg-gray-50">
-        <div className="text-brand-main font-bold text-xl animate-pulse">
-          Carregando sistema...
+      <div className="flex h-screen w-screen items-center justify-center bg-brand-bg">
+        <div className="flex flex-col items-center gap-3">
+          <span className="h-10 w-10 rounded-full border-4 border-brand-main/20 border-t-brand-main animate-spin" />
+          <span className="text-brand-dark/60 font-semibold text-sm tracking-wide">Carregando sistema...</span>
         </div>
       </div>
     );
@@ -54,10 +57,20 @@ function RotaPrivada({ children, rolesPermitidas }) {
   }
 
   return (
-    <div className="flex h-screen bg-gray-50 overflow-hidden">
+    <div className="flex h-screen bg-brand-bg overflow-hidden">
       <Layout />
       <div className="flex-1 overflow-y-auto p-4 sm:p-8">
-        {children}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={location.pathname}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+          >
+            {children}
+          </motion.div>
+        </AnimatePresence>
       </div>
     </div>
   );

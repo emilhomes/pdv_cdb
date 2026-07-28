@@ -125,7 +125,7 @@ export default function Produtos() {
         </div>
         <button 
           onClick={() => { resetFormulario(); setModalCadastroAberto(true); }}
-          className="flex items-center gap-2 bg-brand-main hover:bg-brand-dark text-white px-5 py-2.5 rounded-lg font-medium transition-colors"
+          className="flex items-center gap-2 bg-brand-main hover:bg-brand-dark text-white px-5 py-2.5 rounded-xl font-medium transition-colors"
         >
           <Plus size={20} /> Novo Produto
         </button>
@@ -141,12 +141,12 @@ export default function Produtos() {
           placeholder="Buscar por nome ou código de barras..."
           value={busca}
           onChange={(e) => setBusca(e.target.value)}
-          className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-main outline-none bg-white shadow-sm"
+          className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-main outline-none bg-white shadow-sm"
         />
       </div>
 
       {/* Tabela de Produtos */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+      <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
@@ -202,7 +202,7 @@ export default function Produtos() {
                         R$ {produto.precoVenda?.toFixed(2).replace('.', ',')}
                       </td>
                       <td className="px-6 py-4">
-                        <span className={`px-2 py-1 rounded-md text-xs font-semibold ${margem < 20 ? 'bg-orange-100 text-orange-700' : 'bg-green-100 text-green-700'}`}>
+                        <span className={`px-2 py-1 rounded-xl text-xs font-semibold ${margem < 20 ? 'bg-orange-100 text-orange-700' : 'bg-green-100 text-green-700'}`}>
                           {margem}%
                         </span>
                       </td>
@@ -238,7 +238,7 @@ export default function Produtos() {
       {/* MODAL DE CADASTRO/EDIÇÃO */}
       {modalCadastroAberto && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl shadow-xl w-full max-w-3xl overflow-hidden flex flex-col max-h-[90vh]">
+          <div className="bg-white rounded-2xl shadow-xl w-full max-w-3xl overflow-hidden flex flex-col max-h-[90vh]">
             <div className="flex justify-between items-center p-5 border-b border-gray-100">
               <h2 className="text-lg font-bold text-brand-dark">
                 {produtoEditando ? 'Editar Produto' : 'Novo Produto'}
@@ -256,13 +256,13 @@ export default function Produtos() {
                     <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
                       <Package size={16} className="text-brand-main" /> Nome do Produto
                     </label>
-                    <input type="text" required value={nome} onChange={(e) => setNome(e.target.value)} placeholder="Ex: Cerveja Heineken 330ml" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-main outline-none" />
+                    <input type="text" required value={nome} onChange={(e) => setNome(e.target.value)} placeholder="Ex: Cerveja Heineken 330ml" className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-main outline-none" />
                   </div>
                   <div className="space-y-1">
                     <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
                       <Tags size={16} className="text-brand-main" /> Categoria
                     </label>
-                    <input type="text" value={categoria} onChange={(e) => setCategoria(e.target.value)} placeholder="Ex: Cervejas" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-main outline-none" />
+                    <input type="text" value={categoria} onChange={(e) => setCategoria(e.target.value)} placeholder="Ex: Cervejas" className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-main outline-none" />
                   </div>
                 </div>
 
@@ -271,34 +271,34 @@ export default function Produtos() {
                     <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
                       <Barcode size={16} className="text-brand-main" /> Cód. de Barras (EAN)
                     </label>
-                    <input type="text" value={codigoBarras} onChange={(e) => setCodigoBarras(e.target.value)} placeholder="Bipe o leitor aqui" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-main outline-none" />
+                    <input type="text" value={codigoBarras} onChange={(e) => setCodigoBarras(e.target.value)} placeholder="Bipe o leitor aqui" className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-main outline-none" />
                   </div>
                   <div className="space-y-1">
                     <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
                       <Archive size={16} className="text-brand-main" /> Estoque Atual
                     </label>
-                    <input type="number" required min="0" value={estoqueAtual} onChange={(e) => setEstoqueAtual(e.target.value)} placeholder="0" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-main outline-none" />
+                    <input type="number" required min="0" value={estoqueAtual} onChange={(e) => setEstoqueAtual(e.target.value)} placeholder="0" className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-main outline-none" />
                   </div>
                   <div className="space-y-1">
                     <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
                       <AlertCircle size={16} className="text-brand-main" /> Estoque Mínimo
                     </label>
-                    <input type="number" required min="0" value={estoqueMinimo} onChange={(e) => setEstoqueMinimo(e.target.value)} placeholder="0" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-main outline-none" />
+                    <input type="number" required min="0" value={estoqueMinimo} onChange={(e) => setEstoqueMinimo(e.target.value)} placeholder="0" className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-main outline-none" />
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 bg-gray-50 p-4 rounded-lg border border-gray-100">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 bg-gray-50 p-4 rounded-xl border border-gray-100">
                   <div className="space-y-1">
                     <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
                       <DollarSign size={16} className="text-gray-500" /> Preço de Custo (R$)
                     </label>
-                    <input type="number" step="0.01" min="0" required value={precoCusto} onChange={(e) => setPrecoCusto(e.target.value)} placeholder="0.00" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-main outline-none" />
+                    <input type="number" step="0.01" min="0" required value={precoCusto} onChange={(e) => setPrecoCusto(e.target.value)} placeholder="0.00" className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-main outline-none" />
                   </div>
                   <div className="space-y-1">
                     <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
                       <DollarSign size={16} className="text-green-600" /> Preço de Venda (R$)
                     </label>
-                    <input type="number" step="0.01" min="0" required value={precoVenda} onChange={(e) => setPrecoVenda(e.target.value)} placeholder="0.00" className="w-full px-4 py-2 border border-green-300 rounded-lg focus:ring-2 focus:ring-green-500 outline-none" />
+                    <input type="number" step="0.01" min="0" required value={precoVenda} onChange={(e) => setPrecoVenda(e.target.value)} placeholder="0.00" className="w-full px-4 py-2 border border-green-300 rounded-xl focus:ring-2 focus:ring-green-500 outline-none" />
                   </div>
                 </div>
 
@@ -306,10 +306,10 @@ export default function Produtos() {
             </div>
 
             <div className="p-5 border-t border-gray-100 bg-gray-50 flex justify-end gap-3">
-              <button type="button" onClick={resetFormulario} className="px-5 py-2 text-gray-600 font-medium hover:bg-gray-200 rounded-lg transition-colors">
+              <button type="button" onClick={resetFormulario} className="px-5 py-2 text-gray-600 font-medium hover:bg-gray-200 rounded-xl transition-colors">
                 Cancelar
               </button>
-              <button type="submit" form="form-produto" disabled={loading} className="px-5 py-2 bg-brand-main hover:bg-brand-dark text-white rounded-lg font-medium transition-colors flex items-center gap-2">
+              <button type="submit" form="form-produto" disabled={loading} className="px-5 py-2 bg-brand-main hover:bg-brand-dark text-white rounded-xl font-medium transition-colors flex items-center gap-2">
                 <Save size={18} /> {loading ? 'Salvando...' : (produtoEditando ? 'Atualizar Produto' : 'Salvar Produto')}
               </button>
             </div>

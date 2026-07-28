@@ -165,18 +165,18 @@ export default function PDV() {
             onChange={(e) => setBusca(e.target.value)}
             onKeyDown={handleBuscaEnter}
             autoFocus
-            className="w-full pl-12 pr-4 py-4 text-lg border-2 border-brand-light rounded-xl focus:ring-0 focus:border-brand-main outline-none bg-white shadow-sm transition-colors"
+            className="w-full pl-12 pr-4 py-4 text-lg border-2 border-brand-light rounded-2xl focus:ring-0 focus:border-brand-main outline-none bg-white shadow-sm transition-colors"
           />
         </div>
 
-        <div className="flex-1 bg-white rounded-xl shadow-sm border border-gray-200 p-4 overflow-y-auto">
+        <div className="flex-1 bg-white rounded-2xl shadow-sm border border-gray-200 p-4 overflow-y-auto">
           <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4">Produtos Rápidos</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-4">
             {produtosFiltrados.map(produto => (
               <div 
                 key={produto.id} 
                 onClick={() => adicionarAoCarrinho(produto)}
-                className="border border-gray-100 rounded-lg p-4 cursor-pointer hover:border-brand-main hover:bg-brand-light/10 transition-all flex flex-col justify-between h-32"
+                className="border border-gray-100 rounded-xl p-4 cursor-pointer hover:border-brand-main hover:bg-brand-light/10 transition-all flex flex-col justify-between h-32"
               >
                 <p className="font-medium text-gray-800 line-clamp-2 text-sm">{produto.nome}</p>
                 <p className="font-bold text-green-600">R$ {produto.precoVenda?.toFixed(2).replace('.', ',')}</p>
@@ -187,7 +187,7 @@ export default function PDV() {
       </div>
 
       {/* LADO DIREITO: Carrinho de Compras */}
-      <div className="w-full lg:w-[400px] flex flex-col bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+      <div className="w-full lg:w-[400px] flex flex-col bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
         <div className="p-4 bg-gray-50 border-b border-gray-200 flex items-center gap-2">
           <ShoppingCart size={20} className="text-brand-dark" />
           <h2 className="text-lg font-bold text-brand-dark">Carrinho</h2>
@@ -208,12 +208,12 @@ export default function PDV() {
                 </div>
                 
                 <div className="flex items-center gap-2">
-                  <div className="flex items-center bg-gray-100 rounded-lg p-1">
+                  <div className="flex items-center bg-gray-100 rounded-xl p-1">
                     <button onClick={() => alterarQuantidade(item.id, -1)} className="p-1 hover:bg-white rounded text-gray-600"><Minus size={14}/></button>
                     <span className="w-8 text-center text-sm font-medium">{item.quantidade}</span>
                     <button onClick={() => alterarQuantidade(item.id, 1)} className="p-1 hover:bg-white rounded text-gray-600"><Plus size={14}/></button>
                   </div>
-                  <button onClick={() => removerDoCarrinho(item.id)} className="p-2 text-red-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors">
+                  <button onClick={() => removerDoCarrinho(item.id)} className="p-2 text-red-400 hover:text-red-600 hover:bg-red-50 rounded-xl transition-colors">
                     <Trash2 size={18} />
                   </button>
                 </div>
@@ -230,7 +230,7 @@ export default function PDV() {
           <button 
             onClick={() => setModalPagamentoAberto(true)}
             disabled={carrinho.length === 0}
-            className="w-full py-4 bg-brand-main hover:bg-brand-dark disabled:bg-gray-300 disabled:cursor-not-allowed text-white rounded-xl font-bold text-lg transition-colors flex justify-center items-center gap-2"
+            className="w-full py-4 bg-brand-main hover:bg-brand-dark disabled:bg-gray-300 disabled:cursor-not-allowed text-white rounded-2xl font-bold text-lg transition-colors flex justify-center items-center gap-2"
           >
             <CheckCircle size={24} /> Fechar Venda
           </button>
@@ -240,7 +240,7 @@ export default function PDV() {
       {/* MODAL DE PAGAMENTO */}
       {modalPagamentoAberto && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl shadow-xl w-full max-w-lg overflow-hidden flex flex-col">
+          <div className="bg-white rounded-2xl shadow-xl w-full max-w-lg overflow-hidden flex flex-col">
             <div className="p-6 border-b border-gray-100 flex justify-between items-center">
               <h2 className="text-2xl font-bold text-brand-dark">Pagamento</h2>
               <button onClick={() => setModalPagamentoAberto(false)} className="text-gray-400 hover:text-gray-700"><Trash2 size={24} className="opacity-0"/>{/* Filler para centralizar */}Fechar</button>
@@ -253,30 +253,30 @@ export default function PDV() {
               </div>
 
               <div className="grid grid-cols-2 gap-3">
-                <button onClick={() => setFormaPagamento('Dinheiro')} className={`py-3 flex flex-col items-center gap-2 rounded-xl border-2 transition-all ${formaPagamento === 'Dinheiro' ? 'border-brand-main bg-brand-light/10 text-brand-main' : 'border-gray-200 text-gray-500 hover:border-gray-300'}`}>
+                <button onClick={() => setFormaPagamento('Dinheiro')} className={`py-3 flex flex-col items-center gap-2 rounded-2xl border-2 transition-all ${formaPagamento === 'Dinheiro' ? 'border-brand-main bg-brand-light/10 text-brand-main' : 'border-gray-200 text-gray-500 hover:border-gray-300'}`}>
                   <Banknote size={24} /> <span className="font-bold">Dinheiro</span>
                 </button>
-                <button onClick={() => setFormaPagamento('Pix')} className={`py-3 flex flex-col items-center gap-2 rounded-xl border-2 transition-all ${formaPagamento === 'Pix' ? 'border-brand-main bg-brand-light/10 text-brand-main' : 'border-gray-200 text-gray-500 hover:border-gray-300'}`}>
+                <button onClick={() => setFormaPagamento('Pix')} className={`py-3 flex flex-col items-center gap-2 rounded-2xl border-2 transition-all ${formaPagamento === 'Pix' ? 'border-brand-main bg-brand-light/10 text-brand-main' : 'border-gray-200 text-gray-500 hover:border-gray-300'}`}>
                   <Smartphone size={24} /> <span className="font-bold">Pix</span>
                 </button>
-                <button onClick={() => setFormaPagamento('Cartão')} className={`py-3 flex flex-col items-center gap-2 rounded-xl border-2 transition-all ${formaPagamento === 'Cartão' ? 'border-brand-main bg-brand-light/10 text-brand-main' : 'border-gray-200 text-gray-500 hover:border-gray-300'}`}>
+                <button onClick={() => setFormaPagamento('Cartão')} className={`py-3 flex flex-col items-center gap-2 rounded-2xl border-2 transition-all ${formaPagamento === 'Cartão' ? 'border-brand-main bg-brand-light/10 text-brand-main' : 'border-gray-200 text-gray-500 hover:border-gray-300'}`}>
                   <CreditCard size={24} /> <span className="font-bold">Cartão</span>
                 </button>
-                <button onClick={() => setFormaPagamento('Fiado')} className={`py-3 flex flex-col items-center gap-2 rounded-xl border-2 transition-all ${formaPagamento === 'Fiado' ? 'border-brand-main bg-brand-light/10 text-brand-main' : 'border-gray-200 text-gray-500 hover:border-gray-300'}`}>
+                <button onClick={() => setFormaPagamento('Fiado')} className={`py-3 flex flex-col items-center gap-2 rounded-2xl border-2 transition-all ${formaPagamento === 'Fiado' ? 'border-brand-main bg-brand-light/10 text-brand-main' : 'border-gray-200 text-gray-500 hover:border-gray-300'}`}>
                   <User size={24} /> <span className="font-bold">Fiado</span>
                 </button>
               </div>
 
               {/* Seletor de Cliente condicional para o Fiado */}
               {formaPagamento === 'Fiado' && (
-                <div className="space-y-2 p-4 bg-orange-50 rounded-lg border border-orange-100">
+                <div className="space-y-2 p-4 bg-orange-50 rounded-xl border border-orange-100">
                   <label className="text-sm font-bold text-orange-800 flex items-center gap-2">
                     Vincular Cliente (Controle de Limite)
                   </label>
                   <select 
                     value={clienteSelecionadoId} 
                     onChange={(e) => setClienteSelecionadoId(e.target.value)}
-                    className="w-full px-4 py-2 border border-orange-200 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none bg-white"
+                    className="w-full px-4 py-2 border border-orange-200 rounded-xl focus:ring-2 focus:ring-orange-500 outline-none bg-white"
                   >
                     <option value="">-- Selecione o Cliente --</option>
                     {clientes.map(c => {
@@ -296,7 +296,7 @@ export default function PDV() {
               <button 
                 onClick={handleFinalizarVenda}
                 disabled={loading}
-                className="w-full py-4 bg-green-600 hover:bg-green-700 text-white rounded-xl font-bold text-lg transition-colors flex justify-center items-center gap-2"
+                className="w-full py-4 bg-green-600 hover:bg-green-700 text-white rounded-2xl font-bold text-lg transition-colors flex justify-center items-center gap-2"
               >
                 {loading ? 'Processando...' : 'Confirmar Pagamento'}
               </button>

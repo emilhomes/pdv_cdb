@@ -202,7 +202,7 @@ export default function Relatorios() {
       </div>
 
       {/* PAINEL DE CONTROLE (Filtros) */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+      <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           
           <div className="space-y-2 md:col-span-2">
@@ -212,7 +212,7 @@ export default function Relatorios() {
             <select 
               value={tipoRelatorio} 
               onChange={(e) => setTipoRelatorio(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-main outline-none bg-gray-50"
+              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-main outline-none bg-gray-50"
             >
               <option value="caixa">Fechamento de Caixa (Por Pagamento)</option>
               <option value="fiado">Extrato de Fiado (Devedores)</option>
@@ -229,7 +229,7 @@ export default function Relatorios() {
               type="date" 
               value={dataInicio} 
               onChange={(e) => setDataInicio(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-main outline-none bg-gray-50"
+              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-main outline-none bg-gray-50"
             />
           </div>
 
@@ -241,7 +241,7 @@ export default function Relatorios() {
               type="date" 
               value={dataFim} 
               onChange={(e) => setDataFim(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-main outline-none bg-gray-50"
+              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-main outline-none bg-gray-50"
             />
           </div>
 
@@ -251,7 +251,7 @@ export default function Relatorios() {
           <button 
             onClick={gerarRelatorio}
             disabled={loading}
-            className="flex items-center gap-2 bg-brand-main hover:bg-brand-dark text-white px-6 py-3 rounded-lg font-bold transition-colors"
+            className="flex items-center gap-2 bg-brand-main hover:bg-brand-dark text-white px-6 py-3 rounded-xl font-bold transition-colors"
           >
             <Search size={20} /> {loading ? 'Buscando...' : 'Gerar Prévia'}
           </button>
@@ -259,7 +259,7 @@ export default function Relatorios() {
           <button 
             onClick={exportarParaPDF}
             disabled={dados.length === 0}
-            className="flex items-center gap-2 bg-red-600 hover:bg-red-700 disabled:bg-gray-300 text-white px-6 py-3 rounded-lg font-bold transition-colors shadow-sm"
+            className="flex items-center gap-2 bg-red-600 hover:bg-red-700 disabled:bg-gray-300 text-white px-6 py-3 rounded-xl font-bold transition-colors shadow-sm"
           >
             <Download size={20} /> Baixar PDF
           </button>
@@ -268,7 +268,7 @@ export default function Relatorios() {
 
       {/* ÁREA DE PRÉVIA DO RELATÓRIO COM PROTEÇÃO DE UNDEFINED */}
       {dados.length > 0 && (
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
           <div className="p-5 border-b border-gray-200 bg-gray-50 flex justify-between items-center">
             <h2 className="text-lg font-bold text-brand-dark flex items-center gap-2">
               <BarChart3 size={20} /> Prévia: {formatarNomeRelatorio(tipoRelatorio)}

@@ -161,13 +161,13 @@ export default function Dashboard() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         
         {/* Faturamento Hoje */}
-        <div className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
+        <div className="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-0.5">
           <div className="flex justify-between items-start">
             <div>
               <p className="text-sm font-bold text-gray-500 uppercase">Vendas Hoje</p>
               <h3 className="text-2xl font-bold text-gray-900 mt-1">R$ {faturamentoHoje.toFixed(2).replace('.', ',')}</h3>
             </div>
-            <div className="p-3 bg-green-50 text-green-600 rounded-lg"><TrendingUp size={24} /></div>
+            <div className="p-3 bg-green-50 text-green-600 rounded-xl"><TrendingUp size={24} /></div>
           </div>
           <div className="mt-4 flex items-center gap-2 text-sm">
             <span className={`font-bold ${crescimentoHoje >= 0 ? 'text-green-600' : 'text-red-500'}`}>
@@ -178,37 +178,37 @@ export default function Dashboard() {
         </div>
 
         {/* Faturamento Mês */}
-        <div className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
+        <div className="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-0.5">
           <div className="flex justify-between items-start">
             <div>
               <p className="text-sm font-bold text-gray-500 uppercase">Faturamento (Mês)</p>
               <h3 className="text-2xl font-bold text-gray-900 mt-1">R$ {faturamentoMes.toFixed(2).replace('.', ',')}</h3>
             </div>
-            <div className="p-3 bg-blue-50 text-blue-600 rounded-lg"><DollarSign size={24} /></div>
+            <div className="p-3 bg-blue-50 text-blue-600 rounded-xl"><DollarSign size={24} /></div>
           </div>
           <p className="mt-4 text-sm text-gray-500">Total acumulado no mês atual</p>
         </div>
 
         {/* Ticket Médio */}
-        <div className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
+        <div className="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-0.5">
           <div className="flex justify-between items-start">
             <div>
               <p className="text-sm font-bold text-gray-500 uppercase">Ticket Médio</p>
               <h3 className="text-2xl font-bold text-gray-900 mt-1">R$ {ticketMedio.toFixed(2).replace('.', ',')}</h3>
             </div>
-            <div className="p-3 bg-purple-50 text-purple-600 rounded-lg"><Receipt size={24} /></div>
+            <div className="p-3 bg-purple-50 text-purple-600 rounded-xl"><Receipt size={24} /></div>
           </div>
           <p className="mt-4 text-sm text-gray-500">Média gasta por cliente no mês</p>
         </div>
 
         {/* Total Fiado */}
-        <div className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
+        <div className="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-0.5">
           <div className="flex justify-between items-start">
             <div>
               <p className="text-sm font-bold text-gray-500 uppercase">A Receber (Fiado)</p>
               <h3 className="text-2xl font-bold text-red-500 mt-1">R$ {totalFiado.toFixed(2).replace('.', ',')}</h3>
             </div>
-            <div className="p-3 bg-orange-50 text-orange-600 rounded-lg"><Users size={24} /></div>
+            <div className="p-3 bg-orange-50 text-orange-600 rounded-xl"><Users size={24} /></div>
           </div>
           <p className="mt-4 text-sm text-gray-500">Capital na rua pendente de acerto</p>
         </div>
@@ -219,7 +219,7 @@ export default function Dashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         {/* Gráfico: Receita x Despesa (Ocupa 2 colunas) */}
-        <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm lg:col-span-2">
+        <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-0.5 lg:col-span-2">
           <h2 className="text-lg font-bold text-brand-dark mb-6">Receita vs. Despesas (Últimos 6 meses)</h2>
           <div className="h-72">
             <ResponsiveContainer width="100%" height="100%">
@@ -237,7 +237,7 @@ export default function Dashboard() {
         </div>
 
         {/* Gráfico: Formas de Pagamento (Ocupa 1 coluna) */}
-        <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
+        <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-0.5">
           <h2 className="text-lg font-bold text-brand-dark mb-2">Formas de Pagamento</h2>
           <p className="text-sm text-gray-500 mb-6">Distribuição das vendas no mês</p>
           <div className="h-64">
@@ -269,7 +269,7 @@ export default function Dashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         
         {/* Alerta de Estoque */}
-        <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-0.5 overflow-hidden">
           <div className="p-5 border-b border-gray-100 flex items-center gap-3">
             <AlertTriangle className="text-orange-500" />
             <h2 className="text-lg font-bold text-brand-dark">Alerta de Estoque</h2>
@@ -303,7 +303,7 @@ export default function Dashboard() {
         </div>
 
         {/* Top 5 Mais Vendidos */}
-        <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-0.5 overflow-hidden">
           <div className="p-5 border-b border-gray-100 flex items-center gap-3">
             <PackageOpen className="text-brand-main" />
             <h2 className="text-lg font-bold text-brand-dark">Top 5 Mais Vendidos (Mês)</h2>

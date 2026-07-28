@@ -175,7 +175,7 @@ export default function Clientes() {
         </div>
         <button 
           onClick={() => { resetFormulario(); setModalCadastroAberto(true); }}
-          className="flex items-center gap-2 bg-brand-main hover:bg-brand-dark text-white px-5 py-2.5 rounded-lg font-medium transition-colors"
+          className="flex items-center gap-2 bg-brand-main hover:bg-brand-dark text-white px-5 py-2.5 rounded-xl font-medium transition-colors"
         >
           <Plus size={20} /> Novo Cliente
         </button>
@@ -190,13 +190,13 @@ export default function Clientes() {
           placeholder="Buscar cliente por nome..."
           value={busca}
           onChange={(e) => setBusca(e.target.value)}
-          className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-main outline-none bg-white shadow-sm"
+          className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-main outline-none bg-white shadow-sm"
         />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-4">
         {clientesFiltrados.length === 0 ? (
-          <div className="col-span-full p-8 text-center text-gray-500 bg-white rounded-xl border border-gray-100">
+          <div className="col-span-full p-8 text-center text-gray-500 bg-white rounded-2xl border border-gray-100">
             Nenhum cliente encontrado.
           </div>
         ) : (
@@ -210,19 +210,19 @@ export default function Clientes() {
               <div 
                 key={cliente.id} 
                 onClick={() => setClienteSelecionado(cliente)}
-                className="bg-white rounded-xl border border-gray-200 p-5 shadow-sm hover:shadow-md hover:border-brand-main transition-all cursor-pointer group relative"
+                className="bg-white rounded-2xl border border-gray-200 p-5 shadow-sm hover:shadow-md hover:border-brand-main transition-all cursor-pointer group relative"
               >
                 <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                   <button 
                     onClick={(e) => { e.stopPropagation(); handleEditar(cliente); }}
-                    className="p-1.5 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors"
+                    className="p-1.5 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-xl transition-colors"
                     title="Editar"
                   >
                     <Edit size={16} />
                   </button>
                   <button 
                     onClick={(e) => { e.stopPropagation(); handleExcluir(cliente); }}
-                    className="p-1.5 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-md transition-colors"
+                    className="p-1.5 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-xl transition-colors"
                     title="Excluir"
                   >
                     <Trash2 size={16} />
@@ -265,7 +265,7 @@ export default function Clientes() {
       {/* MODAL DE CADASTRO/EDIÇÃO */}
       {modalCadastroAberto && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl shadow-xl w-full max-w-lg overflow-hidden flex flex-col max-h-[90vh]">
+          <div className="bg-white rounded-2xl shadow-xl w-full max-w-lg overflow-hidden flex flex-col max-h-[90vh]">
             <div className="flex justify-between items-center p-5 border-b border-gray-100">
               <h2 className="text-lg font-bold text-brand-dark">
                 {clienteEditando ? 'Editar Cliente' : 'Novo Cadastro'}
@@ -281,28 +281,28 @@ export default function Clientes() {
                   <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
                     <User size={16} className="text-brand-main" /> Nome Completo
                   </label>
-                  <input type="text" required value={nome} onChange={(e) => setNome(e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-main outline-none" />
+                  <input type="text" required value={nome} onChange={(e) => setNome(e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-main outline-none" />
                 </div>
                 <div className="space-y-1">
                   <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
                     <Phone size={16} className="text-brand-main" /> Telefone
                   </label>
-                  <input type="text" required value={telefone} onChange={(e) => setTelefone(e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-main outline-none" />
+                  <input type="text" required value={telefone} onChange={(e) => setTelefone(e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-main outline-none" />
                 </div>
                 <div className="space-y-1">
                   <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
                     <DollarSign size={16} className="text-brand-main" /> Limite de Fiado (R$)
                   </label>
-                  <input type="number" step="0.01" min="0" required value={limiteCredito} onChange={(e) => setLimiteCredito(e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-main outline-none" />
+                  <input type="number" step="0.01" min="0" required value={limiteCredito} onChange={(e) => setLimiteCredito(e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-main outline-none" />
                 </div>
               </form>
             </div>
 
             <div className="p-5 border-t border-gray-100 bg-gray-50 flex justify-end gap-3">
-              <button type="button" onClick={resetFormulario} className="px-5 py-2 text-gray-600 font-medium hover:bg-gray-200 rounded-lg transition-colors">
+              <button type="button" onClick={resetFormulario} className="px-5 py-2 text-gray-600 font-medium hover:bg-gray-200 rounded-xl transition-colors">
                 Cancelar
               </button>
-              <button type="submit" form="form-cliente" disabled={loading} className="px-5 py-2 bg-brand-main hover:bg-brand-dark text-white rounded-lg font-medium transition-colors flex items-center gap-2">
+              <button type="submit" form="form-cliente" disabled={loading} className="px-5 py-2 bg-brand-main hover:bg-brand-dark text-white rounded-xl font-medium transition-colors flex items-center gap-2">
                 <Save size={18} /> {loading ? 'Salvando...' : (clienteEditando ? 'Atualizar' : 'Salvar')}
               </button>
             </div>
@@ -313,7 +313,7 @@ export default function Clientes() {
       {/* MODAL DE HISTÓRICO COM EXTRATO E PAGAMENTO */}
       {clienteSelecionado && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl shadow-xl w-full max-w-3xl overflow-hidden flex flex-col max-h-[90vh]">
+          <div className="bg-white rounded-2xl shadow-xl w-full max-w-3xl overflow-hidden flex flex-col max-h-[90vh]">
             
             {/* Cabeçalho */}
             <div className="flex justify-between items-center p-5 border-b border-gray-100 bg-brand-dark text-white">
@@ -343,13 +343,13 @@ export default function Clientes() {
                   value={valorPagamento}
                   onChange={(e) => setValorPagamento(e.target.value)}
                   placeholder="Valor pago (R$)..."
-                  className="px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 outline-none w-full sm:w-48 text-lg font-medium shadow-sm"
+                  className="px-4 py-3 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-green-500 outline-none w-full sm:w-48 text-lg font-medium shadow-sm"
                   disabled={clienteSelecionado.saldoDevedor <= 0}
                 />
                 <button 
                   type="submit"
                   disabled={loadingPagamento || clienteSelecionado.saldoDevedor <= 0}
-                  className="bg-green-600 hover:bg-green-700 disabled:bg-gray-300 text-white px-6 py-3 rounded-xl font-bold transition-colors flex items-center gap-2 whitespace-nowrap shadow-sm"
+                  className="bg-green-600 hover:bg-green-700 disabled:bg-gray-300 text-white px-6 py-3 rounded-2xl font-bold transition-colors flex items-center gap-2 whitespace-nowrap shadow-sm"
                 >
                   <CheckCircle size={20} /> {loadingPagamento ? 'Aguarde...' : 'Receber'}
                 </button>
@@ -373,7 +373,7 @@ export default function Clientes() {
                     const dataFormatada = new Date(transacao.data).toLocaleString('pt-BR');
 
                     return (
-                      <div key={transacao.id} className="flex justify-between items-center p-4 bg-white border border-gray-100 rounded-xl shadow-sm hover:border-gray-200 transition-colors">
+                      <div key={transacao.id} className="flex justify-between items-center p-4 bg-white border border-gray-100 rounded-2xl shadow-sm hover:border-gray-200 transition-colors">
                         <div className="flex items-center gap-4">
                           <div className={`p-3 rounded-full ${isPagamento ? 'bg-green-100 text-green-600' : 'bg-red-50 text-red-500'}`}>
                             {isPagamento ? <ArrowDownRight size={24} /> : <ArrowUpRight size={24} />}

@@ -93,7 +93,7 @@ export default function Fornecedores() {
         </div>
         <button 
           onClick={() => { resetFormulario(); setModalCadastroAberto(true); }}
-          className="flex items-center gap-2 bg-brand-main hover:bg-brand-dark text-white px-5 py-2.5 rounded-lg font-medium transition-colors"
+          className="flex items-center gap-2 bg-brand-main hover:bg-brand-dark text-white px-5 py-2.5 rounded-xl font-medium transition-colors"
         >
           <Plus size={20} /> Novo Fornecedor
         </button>
@@ -109,25 +109,25 @@ export default function Fornecedores() {
           placeholder="Buscar por nome ou categoria..."
           value={busca}
           onChange={(e) => setBusca(e.target.value)}
-          className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-main outline-none bg-white shadow-sm"
+          className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-main outline-none bg-white shadow-sm"
         />
       </div>
 
       {/* Grid de Fornecedores */}
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 pt-4">
         {fornecedoresFiltrados.length === 0 ? (
-          <div className="col-span-full p-8 text-center text-gray-500 bg-white rounded-xl border border-gray-100">
+          <div className="col-span-full p-8 text-center text-gray-500 bg-white rounded-2xl border border-gray-100">
             Nenhum fornecedor encontrado.
           </div>
         ) : (
           fornecedoresFiltrados.map((fornecedor) => (
-            <div key={fornecedor.id} className="bg-white rounded-xl border border-gray-200 p-5 shadow-sm hover:border-brand-main transition-all group relative">
+            <div key={fornecedor.id} className="bg-white rounded-2xl border border-gray-200 p-5 shadow-sm hover:border-brand-main transition-all group relative">
               
               <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                <button onClick={() => handleEditar(fornecedor)} className="p-1.5 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-md" title="Editar">
+                <button onClick={() => handleEditar(fornecedor)} className="p-1.5 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-xl" title="Editar">
                   <Edit size={16} />
                 </button>
-                <button onClick={() => handleExcluir(fornecedor.id, fornecedor.nome)} className="p-1.5 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-md" title="Excluir">
+                <button onClick={() => handleExcluir(fornecedor.id, fornecedor.nome)} className="p-1.5 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-xl" title="Excluir">
                   <Trash2 size={16} />
                 </button>
               </div>
@@ -138,7 +138,7 @@ export default function Fornecedores() {
                 </div>
                 <div className="pr-12">
                   <h3 className="font-bold text-gray-900 line-clamp-1">{fornecedor.nome}</h3>
-                  <span className="inline-block px-2 py-1 mt-1 bg-gray-100 text-gray-600 text-xs rounded-md font-medium">
+                  <span className="inline-block px-2 py-1 mt-1 bg-gray-100 text-gray-600 text-xs rounded-xl font-medium">
                     {fornecedor.categoria || 'Geral'}
                   </span>
                 </div>
@@ -156,7 +156,7 @@ export default function Fornecedores() {
       {/* Modal de Cadastro */}
       {modalCadastroAberto && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl shadow-xl w-full max-w-lg overflow-hidden">
+          <div className="bg-white rounded-2xl shadow-xl w-full max-w-lg overflow-hidden">
             <div className="flex justify-between items-center p-5 border-b border-gray-100">
               <h2 className="text-lg font-bold text-brand-dark">{fornecedorEditando ? 'Editar Fornecedor' : 'Novo Fornecedor'}</h2>
               <button onClick={resetFormulario} className="text-gray-400 hover:text-gray-700"><X size={24} /></button>
@@ -165,27 +165,27 @@ export default function Fornecedores() {
             <form id="form-fornecedor" onSubmit={handleSalvar} className="p-5 space-y-4">
               <div className="space-y-1">
                 <label className="text-sm font-medium text-gray-700 flex items-center gap-2"><Truck size={16} className="text-brand-main" /> Nome / Razão Social</label>
-                <input type="text" required value={nome} onChange={(e) => setNome(e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-main outline-none" placeholder="Ex: Ambev S.A" />
+                <input type="text" required value={nome} onChange={(e) => setNome(e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-main outline-none" placeholder="Ex: Ambev S.A" />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-1">
                   <label className="text-sm font-medium text-gray-700 flex items-center gap-2"><FileText size={16} className="text-brand-main" /> CNPJ / CPF</label>
-                  <input type="text" value={cnpj} onChange={(e) => setCnpj(e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-main outline-none" />
+                  <input type="text" value={cnpj} onChange={(e) => setCnpj(e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-main outline-none" />
                 </div>
                 <div className="space-y-1">
                   <label className="text-sm font-medium text-gray-700 flex items-center gap-2"><Phone size={16} className="text-brand-main" /> Telefone</label>
-                  <input type="text" value={telefone} onChange={(e) => setTelefone(e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-main outline-none" />
+                  <input type="text" value={telefone} onChange={(e) => setTelefone(e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-main outline-none" />
                 </div>
               </div>
               <div className="space-y-1">
                 <label className="text-sm font-medium text-gray-700 flex items-center gap-2"><Tags size={16} className="text-brand-main" /> Categoria</label>
-                <input type="text" value={categoria} onChange={(e) => setCategoria(e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-main outline-none" placeholder="Ex: Bebidas, Descartáveis..." />
+                <input type="text" value={categoria} onChange={(e) => setCategoria(e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-main outline-none" placeholder="Ex: Bebidas, Descartáveis..." />
               </div>
             </form>
 
             <div className="p-5 border-t border-gray-100 bg-gray-50 flex justify-end gap-3">
-              <button type="button" onClick={resetFormulario} className="px-5 py-2 text-gray-600 font-medium hover:bg-gray-200 rounded-lg">Cancelar</button>
-              <button type="submit" form="form-fornecedor" disabled={loading} className="px-5 py-2 bg-brand-main hover:bg-brand-dark text-white rounded-lg font-medium flex items-center gap-2">
+              <button type="button" onClick={resetFormulario} className="px-5 py-2 text-gray-600 font-medium hover:bg-gray-200 rounded-xl">Cancelar</button>
+              <button type="submit" form="form-fornecedor" disabled={loading} className="px-5 py-2 bg-brand-main hover:bg-brand-dark text-white rounded-xl font-medium flex items-center gap-2">
                 <Save size={18} /> {loading ? 'Salvando...' : 'Salvar'}
               </button>
             </div>
