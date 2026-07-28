@@ -5,6 +5,7 @@ import Clientes from './pages/Clientes';
 import Produtos from './pages/Produtos'
 import PDV from './pages/PDV';
 import Fornecedores from './pages/Fornecedores';
+import Financeiro from './pages/Financeiro';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="produtos" element={<Produtos />} />
           <Route path="pdv" element={<PDV />} />
           <Route path="fornecedores" element={<Fornecedores />} />
+          <Route path="financeiro" element={<Financeiro />} />
         </Route>
       </Routes>
     </BrowserRouter>
