@@ -6,6 +6,7 @@ import Produtos from './pages/Produtos'
 import PDV from './pages/PDV';
 import Fornecedores from './pages/Fornecedores';
 import Financeiro from './pages/Financeiro';
+import Relatorios from './pages/Relatorios';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="pdv" element={<PDV />} />
           <Route path="fornecedores" element={<Fornecedores />} />
           <Route path="financeiro" element={<Financeiro />} />
+          <Route path="relatorios" element={<Relatorios />} />
         </Route>
       </Routes>
     </BrowserRouter>

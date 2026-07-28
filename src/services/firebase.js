@@ -4,6 +4,7 @@ import {
   persistentLocalCache,
   persistentMultipleTabManager
 } from "firebase/firestore";
+import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -21,3 +22,5 @@ const db = initializeFirestore(app, {
 });
 
 export { db };
+
+export const auth = getAuth(app);
