@@ -155,11 +155,6 @@ export default function Dashboard() {
           <h1 className="text-2xl font-bold text-brand-dark">Visão Geral</h1>
           <p className="text-gray-600">Acompanhe o desempenho da loja em tempo real.</p>
         </div>
-        <div className="flex gap-2">
-          <Link to="/pdv" className="bg-brand-main hover:bg-brand-dark text-white px-4 py-2 rounded-lg font-medium transition-colors flex items-center gap-2">
-            <ShoppingCart size={18} /> Abrir PDV
-          </Link>
-        </div>
       </div>
 
       {/* CARDS DE MÉTRICAS */}

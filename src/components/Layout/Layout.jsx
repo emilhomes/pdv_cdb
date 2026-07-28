@@ -1,69 +1,96 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../../contexts/AuthContext';
+import { useNavigate, Link, useLocation } from 'react-router-dom';
 import { 
-  LayoutDashboard, 
-  ShoppingCart, 
-  Package, 
-  Users, 
-  Truck, 
-  CircleDollarSign, 
-  BarChart3
-} from 'lucide-react'; // Removi o ícone "Cloud" da importação
+  LayoutDashboard, ShoppingCart, Package, Users, 
+  Truck, DollarSign, FileText, LogOut 
+} from 'lucide-react';
 
-import logoImg from '../../assets/logo.png'; 
+import logoImg from '../../assets/logo.png';
 
 export default function Layout() {
+  const { usuario, logout } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      navigate('/login');
+    } catch (error) {
+      console.error("Erro ao sair:", error);
+    }
+  };
+
+  const isActive = (path) => location.pathname === path;
+
   const menuItems = [
-    { name: 'Dashboard', path: '/', icon: <LayoutDashboard size={20} /> },
-    { name: 'Balcão / PDV', path: '/pdv', icon: <ShoppingCart size={20} /> },
-    { name: 'Produtos', path: '/produtos', icon: <Package size={20} /> },
-    { name: 'Clientes', path: '/clientes', icon: <Users size={20} /> },
-    { name: 'Fornecedores', path: '/fornecedores', icon: <Truck size={20} /> },
-    { name: 'Financeiro', path: '/financeiro', icon: <CircleDollarSign size={20} /> },
-    { name: 'Relatórios', path: '/relatorios', icon: <BarChart3 size={20} /> },
+    { label: 'Balcão / PDV', path: '/pdv', icon: <ShoppingCart size={20} />, adminOnly: false },
+    { label: 'Produtos', path: '/produtos', icon: <Package size={20} />, adminOnly: false },
+    { label: 'Clientes', path: '/clientes', icon: <Users size={20} />, adminOnly: false },
+    { label: 'Dashboard', path: '/dashboard', icon: <LayoutDashboard size={20} />, adminOnly: true },
+    { label: 'Financeiro', path: '/financeiro', icon: <DollarSign size={20} />, adminOnly: true },
+    { label: 'Fornecedores', path: '/fornecedores', icon: <Truck size={20} />, adminOnly: true },
+    { label: 'Relatórios', path: '/relatorios', icon: <FileText size={20} />, adminOnly: true },
   ];
 
   return (
-    <div className="flex h-screen overflow-hidden">
+    <aside className="w-64 bg-white flex flex-col justify-between border-r border-gray-200 shadow-sm">
       
-      {/* Sidebar Lateral */}
-      {/* Removi o justify-between já que não teremos mais o rodapé da nuvem */}
-      <aside className="w-64 bg-white border-r border-gray-200 flex flex-col">
-        <div>
-          {/* Área da Logo - Ajustada para maior destaque */}
-          <div className="flex items-center justify-center px-4 py-8 border-b border-gray-100">
-            <img 
-              src={logoImg} 
-              alt="Central das Bebidas" 
-              className="w-48 h-auto object-contain" // Definindo uma largura maior (w-48) para a logo crescer
-            />
-          </div>
+      {/* TOPO: Logo Imagem e Perfil */}
+      <div>
+        <div className="p-6 border-b border-gray-100 flex flex-col items-center justify-center text-center">
+          <img 
+            src={logoImg} 
+            alt="Central das Bebidas" 
+            className="h-16 w-auto object-contain mb-2" 
+          />
+          <p className="text-xs text-gray-500 uppercase font-medium tracking-wider">
+            Perfil: <span className="text-brand-dark font-bold">{usuario?.role || '...'}</span>
+          </p>
+        </div>
 
-          {/* Navegação */}
-          <nav className="p-4 space-y-1">
-            {menuItems.map((item) => (
-              <NavLink
-                key={item.name}
+        {/* NAVEGAÇÃO / LINKS */}
+        <nav className="p-4 space-y-1.5">
+          {menuItems.map((item) => {
+            if (item.adminOnly && usuario?.role !== 'admin') return null;
+
+            const ativo = isActive(item.path);
+
+            return (
+              <Link
+                key={item.path}
                 to={item.path}
-                className={({ isActive }) =>
-                  `flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-colors ${
-                    isActive 
-                      ? 'bg-brand-main text-white' 
-                      : 'text-gray-500 hover:bg-brand-light/20 hover:text-brand-dark' 
-                  }`
-                }
+                className={`flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all ${
+                  ativo 
+                    ? 'bg-brand-main text-white shadow-md' 
+                    : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
+                }`}
               >
                 {item.icon}
-                {item.name}
-              </NavLink>
-            ))}
-          </nav>
-        </div>
-      </aside>
+                <span>{item.label}</span>
+              </Link>
+            );
+          })}
+        </nav>
+      </div>
 
-      {/* Área de Conteúdo Principal (Direita) */}
-      <main className="flex-1 overflow-y-auto p-8">
-        <Outlet /> 
-      </main>
-    </div>
+      {/* RODAPÉ: Informações do Usuário + Botão de Sair */}
+      <div className="p-4 border-t border-gray-100 bg-gray-50/50">
+        <div className="mb-3 px-2">
+          <p className="text-sm font-bold text-gray-800 truncate">{usuario?.nome || 'Usuário'}</p>
+          <p className="text-xs text-gray-500 truncate">{usuario?.email}</p>
+        </div>
+
+        <button 
+          onClick={handleLogout}
+          className="w-full flex items-center gap-3 px-4 py-2.5 text-red-600 hover:bg-red-50 rounded-xl transition-colors font-medium text-sm"
+        >
+          <LogOut size={18} />
+          <span>Sair do Sistema</span>
+        </button>
+      </div>
+
+    </aside>
   );
 }
