@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout/Layout';
 import Dashboard from './pages/Dashboard';
 import Clientes from './pages/Clientes';
+import Produtos from './pages/Produtos'
 
 function App() {
   return (
@@ -11,8 +12,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Dashboard />} />
           <Route path="clientes" element={<Clientes />} />
-          {/* Você pode adicionar as outras telas aqui depois: */}
-          {/* <Route path="pdv" element={<Pdv />} /> */}
+          <Route path="produtos" element={<Produtos />} />
         </Route>
       </Routes>
     </BrowserRouter>
