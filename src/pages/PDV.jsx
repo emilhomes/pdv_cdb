@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { collection, onSnapshot, query, orderBy, writeBatch, doc } from 'firebase/firestore';
-import { db } from '../../services/firebase';
+import { db } from '../services/firebase';
 import { 
   Search, ShoppingCart, Trash2, Plus, Minus, CreditCard, 
   Banknote, Smartphone, User, CheckCircle 
